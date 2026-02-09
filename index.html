@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+        <title>PRACTICE ACTIVITY</title>
+    </head>
+
+    <body class="bg-dark p-4">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap Custom Behaviors -->
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card p-4 shadow">
+                        <h2 class="text-center mb-4">FOOD DELIVERY CALCULATOR</h2>
+                        <h5 class="fw-bold">SELECT FOOD ITEM</h5>
+
+                        <select class="form-control mb-3" id="food">
+                            <option selected disabled value="0">Choose a food item</option>
+                            <option value="20">Bloxy Cola</option>
+                            <option value="55">Chezburger</option>
+                            <option value="45">Taco</option>
+                            <option value="20">Water</option>
+                        </select>
+
+                        <input class="form-control mb-3" placeholder="Distance (km)" id="distance">
+                        <input class="form-control mb-3" placeholder="Discount (in percentage)" id="discount">
+
+                        <button class="btn btn-primary" onclick="computePrice();">
+                            Calculate
+                        </button>
+
+                        <p class="fw-bold mt-3" id="output">
+                            
+                        </p>
+
+                        <script>
+                            function computePrice() {
+                                let discount = document.getElementById("discount").value;
+                                
+                                if (String(discount)[String(discount).length - 1] == "%") {
+                                    discount = Number(String(discount).slice(0, -1));
+                                }
+
+                                let distance = document.getElementById("distance").value;
+                                
+                                if (((String(distance)[String(distance).length - 2] == "k") || (String(distance)[String(distance).length - 3] == "k")) && ((String(distance)[String(distance).length - 1] == "m") || (String(distance)[String(distance).length] == "m"))) {
+                                    distance = Number(String(distance).slice(0, -2));
+                                } else if ((String(distance)[String(distance).length - 1] == "m") || (String(distance)[String(distance).length] == "m")) {
+                                    distance = Number(String(distance).slice(0, -1)) / 1000;
+                                }
+
+                                const price = Number(document.getElementById("food").value);
+                                
+                                let deliveryFee = (distance * 20);
+                                let foodPrice = price - price * (discount / 100);
+                                let total = deliveryFee + foodPrice;
+
+                                if (foodPrice <= 0) {
+                                    foodPrice
+                                }
+
+                                document.getElementById("output").innerHTML = "Food Price: PHP " + foodPrice + "<br>Delivery Fee: PHP " + deliveryFee + "<br>Total: PHP " + total
+                            }
+                        </script>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+
+                </div>
+            </div>
+        </div>
+         
+    </body>
+</html>
