@@ -63,7 +63,7 @@
                                 let total = deliveryFee + foodPrice;
 
                                 if (foodPrice <= 0) {
-                                    foodPrice
+                                    foodPrice = "Free";
                                 }
 
                                 document.getElementById("output").innerHTML = "Food Price: PHP " + foodPrice + "<br>Delivery Fee: PHP " + deliveryFee + "<br>Total: PHP " + total
@@ -79,4 +79,5 @@
         </div>
          
     </body>
+
 </html>
